@@ -3,6 +3,7 @@ package manager;
 import domain.Book;
 import domain.Product;
 import domain.Smartphone;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.ProductRepository;
 
@@ -23,10 +24,13 @@ class ProductManagerTest {
     Smartphone smartphone5 = new Smartphone(05, "Xiaomi", 150, "China");
 
     Product product1 = new Product(07, "Шорты", 500);
+    private ProductRepository repository;
 
-    @Test
-    public void shouldNoProduct () {
+
+    @BeforeEach
+    public void saveAll() {
         ProductRepository repository = new ProductRepository();
+
         repository.save(book1);
         repository.save(book2);
         repository.save(book3);
@@ -38,27 +42,21 @@ class ProductManagerTest {
         repository.save(smartphone4);
         repository.save(smartphone5);
 
-        ProductManager manager = new ProductManager(repository);
 
-        Product[] expected = {};
-        Product[] actual = manager.searchBy("Honor");
-
-        assertArrayEquals (expected, actual);
     }
 
     @Test
-    public void shouldOneBook () {
-        ProductRepository repository = new ProductRepository();
-        repository.save(book1);
-        repository.save(book2);
-        repository.save(book3);
-        repository.save(book4);
-        repository.save(book5);
-        repository.save(smartphone1);
-        repository.save(smartphone2);
-        repository.save(smartphone3);
-        repository.save(smartphone4);
-        repository.save(smartphone5);
+    public void shouldNoProduct() {
+
+        ProductManager manager = new ProductManager(repository);
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Honor");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldOneBook() {
 
         ProductManager manager = new ProductManager(repository);
 
@@ -69,18 +67,7 @@ class ProductManagerTest {
     }
 
     @Test
-    public void searchForOneAuthor () {
-        ProductRepository repository = new ProductRepository();
-        repository.save(book1);
-        repository.save(book2);
-        repository.save(book3);
-        repository.save(book4);
-        repository.save(book5);
-        repository.save(smartphone1);
-        repository.save(smartphone2);
-        repository.save(smartphone3);
-        repository.save(smartphone4);
-        repository.save(smartphone5);
+    public void searchForOneAuthor() {
 
         ProductManager manager = new ProductManager(repository);
 
@@ -91,18 +78,7 @@ class ProductManagerTest {
     }
 
     @Test
-    public void searchByManufacturer () {
-        ProductRepository repository = new ProductRepository();
-        repository.save(book1);
-        repository.save(book2);
-        repository.save(book3);
-        repository.save(book4);
-        repository.save(book5);
-        repository.save(smartphone1);
-        repository.save(smartphone2);
-        repository.save(smartphone3);
-        repository.save(smartphone4);
-        repository.save(smartphone5);
+    public void searchByManufacturer() {
 
         ProductManager manager = new ProductManager(repository);
 
@@ -113,18 +89,7 @@ class ProductManagerTest {
     }
 
     @Test
-    public void searchByName () {
-        ProductRepository repository = new ProductRepository();
-        repository.save(book1);
-        repository.save(book2);
-        repository.save(book3);
-        repository.save(book4);
-        repository.save(book5);
-        repository.save(smartphone1);
-        repository.save(smartphone2);
-        repository.save(smartphone3);
-        repository.save(smartphone4);
-        repository.save(smartphone5);
+    public void searchByName() {
 
         ProductManager manager = new ProductManager(repository);
 
@@ -135,18 +100,7 @@ class ProductManagerTest {
     }
 
     @Test
-    public void shouldProductPartOfName () {
-        ProductRepository repository = new ProductRepository();
-        repository.save(book1);
-        repository.save(book2);
-        repository.save(book3);
-        repository.save(book4);
-        repository.save(book5);
-        repository.save(smartphone1);
-        repository.save(smartphone2);
-        repository.save(smartphone3);
-        repository.save(smartphone4);
-        repository.save(smartphone5);
+    public void shouldProductPartOfName() {
 
         ProductManager manager = new ProductManager(repository);
 
@@ -157,19 +111,7 @@ class ProductManagerTest {
     }
 
     @Test
-    public void testAnotherProduct () {
-        ProductRepository repository = new ProductRepository();
-        repository.save(book1);
-        repository.save(book2);
-        repository.save(book3);
-        repository.save(book4);
-        repository.save(book5);
-        repository.save(smartphone1);
-        repository.save(smartphone2);
-        repository.save(smartphone3);
-        repository.save(smartphone4);
-        repository.save(smartphone5);
-        repository.save(product1);
+    public void testAnotherProduct() {
 
         ProductManager manager = new ProductManager(repository);
 
